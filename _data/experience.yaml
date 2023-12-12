@@ -1,0 +1,17 @@
+- organization: 
+    name: My Current Organization
+    location: Salt Lake City, Utah
+    roles:
+      - title: Content Developer
+        emphasis: Data Platform
+        years: 2019–Present
+      - title: Technical Editor
+        emphasis: Data Platform
+        years: 2014–2019
+- organization:
+    name: My Previous Organization
+    location: Denver, Colorado
+    roles:
+      - title: Technical Writer
+        emphasis: 
+        years: 2010–2014

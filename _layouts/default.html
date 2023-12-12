@@ -1,0 +1,102 @@
+{% assign personal = site.data.personal %}
+<h1>{{ personal.name }}</h1>
+{{ personal.location }} | {{ personal.phone }}
+
+<h2>Portfolio</h2>
+
+<a href="{{ personal.portfolio }}">{{ personal.portfolio }}</a> | Password: {{ personal.key }}
+
+<h2>Summary</h2>
+
+{% assign summaryTags = page.tagKeys | where: "tagKey", "summary"  | first %}
+    {% assign bullets = "" | split: ',' %}
+    {% for item in site.data.summary %}
+    {% assign a_group = item.tags | split: ' ' %}
+    {% for summaryTag in summaryTags.tags %}
+    {% assign b_group = summaryTag | split: ' ' %}
+    {% endfor %}
+    {% for a in a_group %}
+    {% for b in b_group %}
+    {% if a == b %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    {% capture list %}
+    {% assign array = bullets | uniq %}
+    {% for value in array %}
+    {{ value | split: "" }}
+    {% endfor %}
+    {% endcapture %}
+    {% for bullet in list %}
+    {{ bullet }}
+    {% endfor %}
+
+<h2>Experience</h2>
+
+{% for item in site.data.experience %}
+<h3>{{ item.organization.name }} | {{ item.organization.location }}</h3>
+{% for roles in item.organization.roles %}
+<h4>{{ roles.title }} | {{ roles.years }}</h4>
+{% capture orgTag %}{{ item.organization.name }}{% endcapture %}
+{% assign tagKeys = page.tagKeys | where: "tagKey", orgTag  | first %}
+<ul>
+    {% assign bullets = "" | split: ',' %}
+    {% for item in site.data.bullets %}
+    {% assign a_group = item.tags | split: ' ' %}
+    {% for pageTag in tagKeys.tags %}
+    {% assign b_group = pageTag | split: ' ' %}
+    {% endfor %}
+    {% for a in a_group %}
+    {% for b in b_group %}
+    {% if a == b %}
+    {% if item.title == roles.title %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    {% capture list %}
+    {% assign array = bullets | uniq %}
+    {% for value in array %}
+    <li>{{ value | split: "" }}</li>
+    {% endfor %}
+    {% endcapture %}
+    {% for bullet in list %}
+    {{ bullet }}
+    {% endfor %}
+</ul>
+<br>
+{% endfor %}
+{% endfor %}
+
+<h2>Technical Skills</h2>
+
+{% assign skillsTags = page.tagKeys | where: "tagKey", "skills"  | first %}
+<ul>
+    {% assign bullets = "" | split: ',' %}
+    {% for item in site.data.skills %}
+    {% assign a_group = item.tags | split: ' ' %}
+    {% for skillsTag in skillsTags.tags %}
+    {% assign b_group = skillsTag | split: ' ' %}
+    {% endfor %}
+    {% for a in a_group %}
+    {% for b in b_group %}
+    {% if a == b %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    {% capture list %}
+    {% assign array = bullets | uniq %}
+    {% for value in array %}
+    <li>{{ value | split: "" }}</li>
+    {% endfor %}
+    {% endcapture %}
+    {% for bullet in list %}
+    {{ bullet }}
+    {% endfor %}
+</ul>

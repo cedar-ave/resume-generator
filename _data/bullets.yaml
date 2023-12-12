@@ -1,0 +1,17 @@
+- item: >-
+    Enable developers to build custom applications on a data platform by providing a REST and .NET API documentation portal, including overviews, tutorials, and reference documentation
+  tags: api developers documentation dotnet
+  organization: My Current Organization
+  title: Content Developer
+
+- item: >-
+    Enable technical users of a suite of data platform applications to transform, govern, secure, and analyze data by producing and managing technical support content like install and user guides, help articles, tutorials, illustrations, videos, release notes, blog posts, emails, UI announcements, and more
+  tags: documentation content guides release-notes 
+  organization: My Current Organization
+  title: Technical Editor
+
+- item: >-
+    Make product support content visible and easily accessible by managing the front-end, back-end, and information architecture of a product documentation website using Microsoft’s open-source DocFx platform, Markdown, Git, Azure DevOps, Azure Web Apps, and Azure Workbooks
+  tags: documentation azure markdown
+  organization: My Previous Organization
+  title: Technical Writer
