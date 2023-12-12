@@ -103,6 +103,7 @@ Create a Markdown file in the `resumes` directory named for the organization and
 
 Enter the keywords from the description of the job you're applying to next to a variable name for each role (separated by spaces). Note that items for `summary` and `skills` already exist.
 
+```
 ---
 layout: default
 fileDate: 2023-12-06
@@ -116,6 +117,7 @@ tagKeys:
   - tagKey: skills
     tags: sql security okta
 ---
+```
 
 ### Customize the template file
 
