@@ -94,22 +94,28 @@ For example, in `bullets.yaml`:
 
 ```
 - item: >-
-    Enable developers to build custom applications on a data platform by providing a REST and .NET API documentation portal, including overviews, tutorials, and reference documentation
-  tags: api developers documentation dotnet
+    My resume bullet...
+  tags: fullStack sql
   organization: My Current Organization
   titleId: 1
 
 - item: >-
-    Enable technical users of a suite of data platform applications to transform, govern, secure, and analyze data by producing and managing technical support content like install and user guides, help articles, tutorials, illustrations, videos, release notes, blog posts, emails, UI announcements, and more
-  tags: documentation content guides release-notes 
+    Another resume bullet...
+  tags: security okta javascript
   organization: My Current Organization
   titleId: 1
 
 - item: >-
-    Make product support content visible and easily accessible by managing the front-end, back-end, and information architecture of a product documentation website using Microsoft’s open-source DocFx platform, Markdown, Git, Azure DevOps, Azure Web Apps, and Azure Workbooks
-  tags: documentation azure markdown
-  organization: My Previous Organization
+    Another resume bullet...
+  tags: documentation guides release-notes 
+  organization: My Current Organization
   titleId: 2
+
+- item: >-
+    Another resume bullet...
+  tags: jira python dotnet documentation
+  organization: My Previous Organization
+  titleId: 3
 ```
 
 ### Create a file for your new resume
@@ -129,7 +135,7 @@ summaryTags: collaboration learning
 skillsTags: azure editorial coding
 experienceTags:
   - titleId: 1
-    tags: fullStack typescript sql
+    tags: fullStack typescript sql javascript
   - titleId: 2
     tags: all
   - titleId: 3
