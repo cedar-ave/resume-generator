@@ -1,23 +1,23 @@
 - item: >-
-    My release note...
+    My resume bullet...
   tags: fullStack sql
   organization: My Current Organization
   titleId: 1
 
 - item: >-
-    Another release note...
+    Another resume bullet...
   tags: security okta javascript
   organization: My Current Organization
   titleId: 1
 
 - item: >-
-    Another release note...
+    Another resume bullet...
   tags: documentation guides release-notes 
   organization: My Current Organization
   titleId: 2
 
 - item: >-
-    Another release note...
+    Another resume bullet...
   tags: jira python dotnet documentation
   organization: My Previous Organization
   titleId: 3
