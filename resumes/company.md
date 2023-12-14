@@ -1,13 +1,13 @@
 ---
 layout: default
 fileDate: 2023-12-06
-tagKeys:
-  - tagKey: summary
-    tags: automations coding
-  - tagKey: My Current Organization
-    tags: branding api write edit documentation
-  - tagKey: My Previous Organization
-    tags: documentation api developers 
-  - tagKey: skills
-    tags: coding editorial
+summaryTags: collaboration learning
+skillsTags: azure editorial coding
+experienceTags:
+  - titleId: 1
+    tags: fullStack typescript sql javascript
+  - titleId: 2
+    tags: all
+  - titleId: 3
+    tags: jira python dotnet
 ---

@@ -1,10 +1,12 @@
 # resume-generator
 
-Job seekers work hard to customize a resume for every job application. Each bullet that describes what you accomplished in a role is written carefully to include keywords from the job description and follow advised structures like Google's XYZ format ("Accomplished [X] as measured by [Y], by doing [Z]").
+Job seekers work hard to customize a resume for every job application. Each bullet that describes what you accomplished in a role is written carefully to include keywords from the job description and follow advised structures like Google's XYZ format ("Accomplished [X] as measured by [Y] by doing [Z]").
 
 Without a way to catalog those carefully written bullets so they can be modified and reused, work is lost and repeated.
 
-Use this tool to capture your best bullets and assign them keywords, organizations, and roles. To generate a resume, enter keywords from the job description and run a script that populates a template with bullets that match those keywords. The template is output as a Word document. You can then further tailor the Word document to match the job description.
+Use this tool to capture your best bullets by organizing them with keywords and classifying them by role.
+
+To generate a resume, enter keywords from the job description in the metadata header of a Markdown file and run a script that populates a template with bullets that match those keywords. The template is output as a Word document. You then can tailor and refine the Word document further to match the job description.
 
 The tool also generates a personal summary and list of skills if desired.
 
@@ -12,20 +14,20 @@ The tool also generates a personal summary and list of skills if desired.
 
 ### Jekyll
 
-This tool runs on Jekyll, a static-site generator that allows content to be catalogued and populated in templates. However, this tool's purpose isn't to generate a website - it only uses the content management features Jekyll offers.
+This tool runs on Jekyll, a static-site generator that allows content to be catalogued and populated in templates. However, this tool's purpose isn't to generate a website. Rather it only leverages the content management features Jekyll offers.
 
 ### Data files
 
 A `_data` directory in Jekyll contains these YAML files:
 
-| File | Description |
-|------|-------------|
-| `bullets.yaml` | Bullets that describe what you accomplished in a role and at which organization and in which role you accomplished it |
-| `education.yaml` | Schools, locations, and degrees |
-| `experience.yaml` | Organizations where you've worked and job titles |
-| `personal.yaml` | Name, contact information, links |
-| `skills.yaml` (optional) | Skills like programming languages, software, stacks, etc., to be included in the resume in a **Skills** section |
-| `summary.yaml` (optional) | Introductory sentences about yourself to be included in the resume in a **Summary** section |
+| File                      | Description                                                                                                           |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `bullets.yaml`            | Bullets that describe what you accomplished in a role and at which organization and in which role you accomplished it |
+| `education.yaml`          | Schools, locations, and degrees                                                                                       |
+| `experience.yaml`         | Organizations you've worked at and job titles                                                                         |
+| `personal.yaml`           | Name, contact information, links                                                                                      |
+| `skills.yaml` (optional)  | Skills like programming languages, software, stacks, etc., to be included in the resume in a **Skills** section       |
+| `summary.yaml` (optional) | Introductory sentences about yourself to be included in the resume in a **Summary** section                           |
 
 ### Metadata header
 
@@ -112,15 +114,18 @@ For example, in `bullets.yaml`:
 
 ### Create a file for your new resume
 
-Create a Markdown file in the `resumes` directory named for the organization and/or role you're applying to (e.g., `XYZ_Eyewear.md`), add a metadata header like the example below. What to enter is documented in [Metadata header](#metadata-header).
+Create a Markdown file in the `resumes` directory named for the organization and/or role you're applying to (e.g., `Company-Name.md`) and add a metadata header like the example below. What to enter is documented in [Metadata header](#metadata-header).
 
-Enter the keywords from the description of the job you're applying to next to a variable name for each role (separated by spaces). Note that items for `summary` and `skills` already exist.
+Enter keywords from the description of the job you're applying to:
+
+- Next to `summaryTags` and `skillsTags` to pull in content relevant to that job
+- Next to `tags` beneath each `titleId` (separated by spaces) to pull in bullets that relate most closely to the job
 
 ```
 ---
 layout: default
 fileDate: 2023-12-06
-summaryTags: api azure frontEnd
+summaryTags: collaboration learning
 skillsTags: azure editorial coding
 experienceTags:
   - titleId: 1
@@ -129,9 +134,7 @@ experienceTags:
     tags: all
   - titleId: 3
     tags: jira python dotnet
-  - titleId: 4
-    tags: sql security okta
---
+---
 ```
 
 ### Customize the template file
@@ -141,7 +144,6 @@ Customize code in `_layouts/default` to change section titles and the order of i
 ### Generate the resume
 
 1. Run `bundle exec jekyll serve` at root.
-
 2. Run `./pandoc.sh` at root.
 
 The Word document is output in the `output` directory. To modify the styles, modify `reference.docx`. See `--reference-doc` in the [Pandoc User Guide](https://pandoc.org/MANUAL.html).
