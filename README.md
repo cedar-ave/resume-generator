@@ -145,11 +145,11 @@ experienceTags:
 
 ### Customize the template file
 
-Customize code in `_layouts/default` to change section titles and the order of information.
+Customize code in `_layouts/default.html` to change section titles and the order of information.
 
 ### Generate the resume
 
 1. Run `bundle exec jekyll serve` at root.
 2. Run `./pandoc.sh` at root.
 
-The Word document is output in the `output` directory. To modify the styles, modify `reference.docx`. See `--reference-doc` in the [Pandoc User Guide](https://pandoc.org/MANUAL.html).
+The Word document is output in the `output` directory. The document's styles are drawn from `reference.docx`. To modify the styles, modify `reference.docx`. See `--reference-doc` in the [Pandoc User Guide](https://pandoc.org/MANUAL.html).
