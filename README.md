@@ -29,23 +29,28 @@ A `_data` directory in Jekyll contains these YAML files:
 
 ### Metadata header
 
-One Markdown file per resume in the `resumes` directory is blank except for a customizable metadata header:
+One Markdown file per resume in the `resumes` directory is blank except for a customizable metadata header.
+
+The `titleId` fields represent your roles in order. `1`is for your current role, `2` is for your most recent role before that, `3` is for your next most recent role, etc. In the instructions below, these IDs are matched to IDs in `titleId` fields in `_data/experience.yaml` and `data_bullets.yaml`.
+
+Entering `all` in a `tags` field returns all bullets associated with that role regardless of their tags.
 
 ```
 ---
 layout: default
 fileDate: 2023-12-06
-tagKeys:
-  - tagKey: summary
-    tags: <tags for sentences to include in your personal summary, separated by spaces, that match tags in `summary.yaml` >
-  - tagKey: <a tag representing the name of your most recent role>
+summaryTags: <tags for sentences to include in your personal summary, separated by spaces, that match tags in `summary.yaml` >
+skillsTags: <tags for your skills, separated by spaces, that match tags in `skills.yaml` >
+experienceTags:
+  - titleId: 1
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
-  - tagKey: <a tag representing the name of your second most recent role>
+  - titleId: 2
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
-  - tagKey: <a tag representing the name of your third most recent role>
+  - titleId: 3
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
-  - tagKey: skills
-    tags: <tags for your skills, separated by spaces, that match tags in `skills.yaml` >
+  - titleId: 4
+    tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
+
 ---
 ```
 
@@ -75,11 +80,13 @@ The Pandoc tool uses the customizable Word styles in the `reference.docx` file a
 
 ### Customize the data files
 
-Customize the files in `_data`. Each file can have as many or few items as you want. See [Data files](#data-files) for details on each file.
+Customize the files in `_data`. Each file can have as many or few items as you want. See [Data files](#data-files) for details on each file. See [Metadata header](#metadata-header) for details on what to enter in the `titleId` fields in `_data/experience.yaml` and `_data/bullets.yaml`.
 
 Important:
+
 - Add spaces between tags, not commas.
-- Use the exact same character string to represent the same information across files, like organizations and titles. The string can have spaces.
+- Use the same character string to represent the same information across files, like organizations. The string can have spaces.
+- Bullets do not have to be grouped by role or stand in any order.
 
 For example, in `bullets.yaml`:
 
@@ -88,13 +95,19 @@ For example, in `bullets.yaml`:
     Enable developers to build custom applications on a data platform by providing a REST and .NET API documentation portal, including overviews, tutorials, and reference documentation
   tags: api developers documentation dotnet
   organization: My Current Organization
-  title: Content Developer
+  titleId: 1
 
 - item: >-
     Enable technical users of a suite of data platform applications to transform, govern, secure, and analyze data by producing and managing technical support content like install and user guides, help articles, tutorials, illustrations, videos, release notes, blog posts, emails, UI announcements, and more
-  tags: content guides release-notes documentation
+  tags: documentation content guides release-notes 
   organization: My Current Organization
-  title: Technical Editor
+  titleId: 1
+
+- item: >-
+    Make product support content visible and easily accessible by managing the front-end, back-end, and information architecture of a product documentation website using Microsoft’s open-source DocFx platform, Markdown, Git, Azure DevOps, Azure Web Apps, and Azure Workbooks
+  tags: documentation azure markdown
+  organization: My Previous Organization
+  titleId: 2
 ```
 
 ### Create a file for your new resume
@@ -107,16 +120,18 @@ Enter the keywords from the description of the job you're applying to next to a 
 ---
 layout: default
 fileDate: 2023-12-06
-tagKeys:
-  - tagKey: summary
-    tags: api azure frontEnd
-  - tagKey: My Current Organization
+summaryTags: api azure frontEnd
+skillsTags: azure editorial coding
+experienceTags:
+  - titleId: 1
     tags: fullStack typescript sql
-  - tagKey: My Previous Organization
-    tags: jira python .net
-  - tagKey: skills
+  - titleId: 2
+    tags: all
+  - titleId: 3
+    tags: jira python dotnet
+  - titleId: 4
     tags: sql security okta
----
+--
 ```
 
 ### Customize the template file

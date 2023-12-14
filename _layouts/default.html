@@ -7,12 +7,10 @@
 <a href="{{ personal.portfolio }}">{{ personal.portfolio }}</a> | Password: {{ personal.key }}
 
 <h2>Summary</h2>
-
-{% assign summaryTags = page.tagKeys | where: "tagKey", "summary"  | first %}
     {% assign bullets = "" | split: ',' %}
     {% for item in site.data.summary %}
     {% assign a_group = item.tags | split: ' ' %}
-    {% for summaryTag in summaryTags.tags %}
+    {% for summaryTag in page.summaryTags %}
     {% assign b_group = summaryTag | split: ' ' %}
     {% endfor %}
     {% for a in a_group %}
@@ -40,18 +38,23 @@
 {% for roles in item.organization.roles %}
 <h4>{{ roles.title }} | {{ roles.years }}</h4>
 {% capture orgTag %}{{ item.organization.name }}{% endcapture %}
-{% assign tagKeys = page.tagKeys | where: "tagKey", orgTag  | first %}
+{% assign experienceTags = page.experienceTags | where: "titleId", roles.titleId | first %}
 <ul>
     {% assign bullets = "" | split: ',' %}
     {% for item in site.data.bullets %}
     {% assign a_group = item.tags | split: ' ' %}
-    {% for pageTag in tagKeys.tags %}
+    {% for pageTag in experienceTags.tags %}
     {% assign b_group = pageTag | split: ' ' %}
     {% endfor %}
+    {% if b_group contains 'all' %}
+    {% if item.titleId == roles.titleId %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
+    {% endif %}
     {% for a in a_group %}
     {% for b in b_group %}
     {% if a == b %}
-    {% if item.title == roles.title %}
+    {% if item.titleId == roles.titleId %}
     {% assign bullets = bullets | push: item.item %}
     {% endif %}
     {% endif %}
@@ -73,13 +76,11 @@
 {% endfor %}
 
 <h2>Technical Skills</h2>
-
-{% assign skillsTags = page.tagKeys | where: "tagKey", "skills"  | first %}
 <ul>
     {% assign bullets = "" | split: ',' %}
     {% for item in site.data.skills %}
     {% assign a_group = item.tags | split: ' ' %}
-    {% for skillsTag in skillsTags.tags %}
+    {% for skillsTag in page.skillsTags %}
     {% assign b_group = skillsTag | split: ' ' %}
     {% endfor %}
     {% for a in a_group %}
