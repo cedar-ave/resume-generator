@@ -41,8 +41,8 @@ Entering `all` in a `tags` field returns all bullets associated with that role r
 ---
 layout: default
 fileDate: 2023-12-06
-summaryTags: <tags for sentences to include in your personal summary, separated by spaces, that match tags in `summary.yaml` >
-skillsTags: <tags for your skills, separated by spaces, that match tags in `skills.yaml` >
+summaryTags: <tags for sentences to include in your personal summary, separated by spaces, that match tags in `summary.yaml`>
+skillsTags: <tags for your skills, separated by spaces, that match tags in `skills.yaml`>
 experienceTags:
   - titleId: 1
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
