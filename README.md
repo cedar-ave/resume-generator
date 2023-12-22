@@ -24,7 +24,7 @@ A `_data` directory in Jekyll contains these YAML files:
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `bullets.yaml`            | Bullets that describe what you accomplished in a role and at which organization and in which role you accomplished it |
 | `education.yaml`          | Schools, locations, and degrees                                                                                       |
-| `experience.yaml`         | Organizations you've worked at and job titles                                                                         |
+| `experience.yaml`         | Organizations you've worked at and job titles with an optional emphasis                                               |
 | `personal.yaml`           | Name, contact information, links                                                                                      |
 | `skills.yaml` (optional)  | Skills like programming languages, software, stacks, etc., to be included in the resume in a **Skills** section       |
 | `summary.yaml` (optional) | Introductory sentences about yourself to be included in the resume in a **Summary** section                           |
@@ -45,12 +45,16 @@ summaryTags: <tags for sentences to include in your personal summary, separated 
 skillsTags: <tags for your skills, separated by spaces, that match tags in `skills.yaml`>
 experienceTags:
   - titleId: 1
+    emphasis: true
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
   - titleId: 2
+    emphasis: false
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
   - titleId: 3
+    emphasis: false
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
   - titleId: 4
+    emphasis: false
     tags: <tags representing what you did in the role, separated by spaces, that match tags in `bullets.yaml`>
 
 ---
@@ -65,7 +69,7 @@ Liquid logic in `_layouts/default.html` draws the tagged content into the approp
 | Personal information | Logic at the top of the file pulls in data from `personal.yaml` to add your name, location, and phone. |
 | Portfolio (optional) | Data from `personal.yaml` is pulled in to add a link and password. |
 | Summary | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) in `summaryTags`. |
-| Experience | For each organization you've worked at, a heading is created for it. For each of one or more roles you've held at each organization, a heading is created for it. Bullets are added beneath each role that align with the organization, role, and tag(s) set in `bullets.yaml`. |
+| Experience | For each organization you've worked at, a heading is created for it. For each of one or more roles you've held at each organization, a heading is created for it. If you add `emphasis: true` in the [Metadata header](#metadata-header), the role's emphasis (designated in `_data/experience.yaml`) is appended. Bullets are added beneath each role that align with the organization, role, and tag(s) set in `bullets.yaml`. |
 | Skills | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) in `skillsTags`. |
 
 ### Pandoc
@@ -135,10 +139,13 @@ summaryTags: collaboration learning
 skillsTags: azure editorial coding
 experienceTags:
   - titleId: 1
+    emphasis: true
     tags: fullStack typescript sql javascript
   - titleId: 2
+    emphasis: false
     tags: all
   - titleId: 3
+    emphasis: false
     tags: jira python dotnet
 ---
 ```
