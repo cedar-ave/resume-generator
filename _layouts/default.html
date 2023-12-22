@@ -13,6 +13,9 @@
     {% for summaryTag in page.summaryTags %}
     {% assign b_group = summaryTag | split: ' ' %}
     {% endfor %}
+    {% if b_group contains 'all' %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
     {% for a in a_group %}
     {% for b in b_group %}
     {% if a == b %}
@@ -31,14 +34,15 @@
     {{ bullet }}
     {% endfor %}
 
+I thrive in environments where collaboration wins over ego, data wins over assumptions, and quality improvement wins overall. I'm humble, I listen, and I love to learn from others.
+
 <h2>Experience</h2>
 
 {% for item in site.data.experience %}
 <h3>{{ item.organization.name }} | {{ item.organization.location }}</h3>
 {% for roles in item.organization.roles %}
-<h4>{{ roles.title }} | {{ roles.years }}</h4>
-{% capture orgTag %}{{ item.organization.name }}{% endcapture %}
-{% assign experienceTags = page.experienceTags | where: "titleId", roles.titleId | first %}
+{% assign experienceTags = page.experienceTags | where: "titleId", roles.titleId  | first %}
+<h4>{{ roles.title }}{% if experienceTags.emphasis == true %}, {{ roles.emphasis }}{% endif %} | {{ roles.years }}</h4>
 <ul>
     {% assign bullets = "" | split: ',' %}
     {% for item in site.data.bullets %}
@@ -83,6 +87,9 @@
     {% for skillsTag in page.skillsTags %}
     {% assign b_group = skillsTag | split: ' ' %}
     {% endfor %}
+    {% if b_group contains 'all' %}
+    {% assign bullets = bullets | push: item.item %}
+    {% endif %}
     {% for a in a_group %}
     {% for b in b_group %}
     {% if a == b %}
