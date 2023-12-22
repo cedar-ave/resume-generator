@@ -64,9 +64,9 @@ Liquid logic in `_layouts/default.html` draws the tagged content into the approp
 |----------------|--------------------|
 | Personal information | Logic at the top of the file pulls in data from `personal.yaml` to add your name, location, and phone. |
 | Portfolio (optional) | Data from `personal.yaml` is pulled in to add a link and password. |
-| Summary | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) under `tagKey: summary`. |
+| Summary | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) in `summaryTags`. |
 | Experience | For each organization you've worked at, a heading is created for it. For each of one or more roles you've held at each organization, a heading is created for it. Bullets are added beneath each role that align with the organization, role, and tag(s) set in `bullets.yaml`. |
-| Skills | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) under `tagKey: skills`. |
+| Skills | Logic pulls in items that match the tags set in the [Metadata header](#metadata-header) in `skillsTags`. |
 
 ### Pandoc
 
