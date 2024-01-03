@@ -2,7 +2,7 @@
 layout: default
 fileDate: 2023-12-06
 summaryTags: collaboration learning
-skillsTags: azure editorial coding
+skillsTags: analytics coding
 experienceTags:
   - titleId: 1
     emphasis: true
